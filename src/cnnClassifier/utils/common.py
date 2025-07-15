@@ -8,12 +8,10 @@ from typing import Any
 from pathlib import Path
 from box.exceptions import BoxValueError
 from box import ConfigBox
-from ensure import ensure_annotations
 
 from cnnClassifier import logger
 
 
-@ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """
     Reads a YAML file and returns a ConfigBox object.
@@ -38,7 +36,6 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise e
 
 
-@ensure_annotations
 def create_directories(path_to_directories: list, verbose: bool = True):
     """
     Creates a list of directories.
@@ -53,7 +50,6 @@ def create_directories(path_to_directories: list, verbose: bool = True):
             logger.info(f"Created directory at: {path}")
 
 
-@ensure_annotations
 def save_json(path: Path, data: dict):
     """
     Saves a dictionary to a JSON file.
@@ -67,7 +63,6 @@ def save_json(path: Path, data: dict):
     logger.info(f"JSON file saved at: {path}")
 
 
-@ensure_annotations
 def load_json(path: Path) -> ConfigBox:
     """
     Loads JSON data and returns it as a ConfigBox.
@@ -84,7 +79,6 @@ def load_json(path: Path) -> ConfigBox:
     return ConfigBox(content)
 
 
-@ensure_annotations
 def save_bin(data: Any, path: Path):
     """
     Saves data as a binary file using joblib.
@@ -96,7 +90,6 @@ def save_bin(data: Any, path: Path):
     joblib.dump(value=data, filename=path)
     logger.info(f"Binary file saved at: {path}")
 
-@ensure_annotations
 def get_size(path: Path) -> str:
     """Get the size of a file in KB."""
     size_in_kb = round(os.path.getsize(path) / 1024)
